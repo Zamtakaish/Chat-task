@@ -21,7 +21,6 @@ class Chat extends React.Component{
             current.setState({ messages: stateMessageArray });
             console.log(current.state);
         };
-        //this.el.scrollIntoView(false);
     }
 
     render() {

@@ -44,13 +44,36 @@
   flex-direction: column;
   overflow: scroll;
   scroll-snap-type: y mandatory;
+  background-color: #cbe2e8;
 }
 .main__chat__message{
-  border: 1px solid black;
+  border: 1px solid #b698b5;
+  border-radius: 20px;
   box-sizing: border-box;
-  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   scroll-snap-align: start;
   color: black;
+  font-size: 1vw;
+  margin: 20px;
+  background-color: #f5fbfd;
+}
+.main__chat__message__username{
+  padding: 7px;
+  font-weight: 600;
+  margin-left: 3%;
+}
+
+.main__chat__message__text{
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  word-wrap: break-word;
+  padding: 0 2%;
+}
+.main__chat__message__time{
+  align-self: flex-end;
+  margin-right: 3%;
+  padding: 7px;
 }
