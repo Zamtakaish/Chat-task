@@ -7,7 +7,7 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <Chat/>
+                <Chat socket={new WebSocket('ws://st-chat.shas.tel')}/>
             </header>
         </div>
     );

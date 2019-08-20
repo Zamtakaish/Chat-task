@@ -42,10 +42,15 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  overflow: scroll;
+  scroll-snap-type: y mandatory;
 }
 .main__chat__message{
   border: 1px solid black;
   box-sizing: border-box;
   width: 100%;
-  height: 10%;
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
+  color: black;
 }

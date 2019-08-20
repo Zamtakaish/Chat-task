@@ -10,15 +10,18 @@ class Chat extends React.Component{
     }
 
     componentDidMount(){
-        let socket = new WebSocket('ws://st-chat.shas.tel');
         let current = this;
-        socket.onmessage = function(event) {
+        this.props.socket.onmessage = function(event) {
+            const responseMessageArray = JSON.parse(event.data).reverse();
+            const stateMessageArray = current.state.messages;
+            responseMessageArray.forEach( item => {
+               stateMessageArray.push(item);
+            });
             console.log(JSON.parse(event.data)[0].from, JSON.parse(event.data)[0].message);
-            let currStateArr = current.state.messages;
-            currStateArr.push(JSON.parse(event.data)[0]);
-            current.setState({ messages: currStateArr });
+            current.setState({ messages: stateMessageArray });
             console.log(current.state);
         };
+        //this.el.scrollIntoView(false);
     }
 
     render() {
@@ -27,9 +30,13 @@ class Chat extends React.Component{
             messages.push(<Message messages={this.state}/>);
         }
         return (
-            <div className="main__chat_wrapper">
+            <div className="main__chat_wrapper" >
                 <div className="main__chat">
-                    {messages}
+                    {
+                        this.state.messages.map((item) =>
+                            <Message from={item.from} message={item.message} time={item.time} />
+                        )
+                    }
                 </div>
             </div>
         );
