@@ -31,7 +31,6 @@ class Chat extends React.Component{
             responseMessageArray.forEach( item => {
                stateMessageArray.push(item);
             });
-            console.log(JSON.parse(event.data)[0].from, JSON.parse(event.data)[0].message);
             current.setState({ messages: stateMessageArray, count: +current.state.count + JSON.parse(event.data).length});
             console.log(current.state);
         };
@@ -65,8 +64,8 @@ class Chat extends React.Component{
                     timeout={10000} />
                 <div className="main__chat">
                     {
-                        this.state.messages.map((item) =>
-                            <Message from={item.from} message={item.message} time={item.time} />
+                        this.state.messages.map((item, index) =>
+                            <Message from={item.from} message={item.message} time={item.time} key={`message${index}`}/>
                         )
                     }
                 </div>
