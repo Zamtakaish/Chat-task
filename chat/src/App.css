@@ -85,7 +85,7 @@ h1{
   background-color: #71b6d1;
 }
 .main__username_title{
-  font-size: 1.6vw;
+  font-size: 1.2vw;
   margin: auto 0;
   padding: 0 21px;
   color: white;
@@ -93,7 +93,7 @@ h1{
 .main__username{
   margin: auto 0;
   padding: 6px;
-  font-size: 1.6vw;
+  font-size: 1.2vw;
   font-weight: 700;
   color: #154545;
   border-radius: 5px;
@@ -103,7 +103,7 @@ h1{
 .main__username_input{
   margin: auto 0;
   padding: 6px;
-  font-size: 1.6vw;
+  font-size: 1.2vw;
   font-family: inherit;
   font-weight: 700;
   color: #154545;
@@ -124,7 +124,7 @@ h1{
   background-color: #85d4ea;
   border: 2px solid #1b1b4b54;
   border-radius: 20px;
-  font-size: 1.4vw;
+  font-size: 1.2vw;
   font-weight: 600;
   color: #f3fffa;
   -webkit-transition: 70ms;

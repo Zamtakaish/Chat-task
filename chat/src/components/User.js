@@ -24,6 +24,9 @@ export default class User extends React.Component{
         this.setState({changeable: false});
     }
 
+    componentDidMount() {
+        localStorage.setItem('username', this.state.value);
+    }
     componentDidUpdate(){
         if(document.getElementsByClassName("main__username_input")[0]){
             document.getElementsByClassName("main__username_input")[0].focus();
