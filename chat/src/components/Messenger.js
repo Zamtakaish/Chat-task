@@ -3,6 +3,7 @@ import IdleTimer from 'react-idle-timer'
 
 import Chat from "./Chat";
 import Input from "./Input";
+import User from "./User";
 
 export default class Messenger extends React.Component{
 
@@ -29,6 +30,7 @@ export default class Messenger extends React.Component{
                     onActive={this.onActive}
                     debounce={250}
                     timeout={10000} />
+                <User/>
                 <Chat socket={this.socket} />
                 <Input socket={this.socket} />
             </div>

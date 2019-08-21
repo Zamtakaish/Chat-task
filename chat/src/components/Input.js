@@ -10,9 +10,8 @@ export default class Input extends React.Component{
     }
 
     submitHandler() {
-        const mes = 'test';
         this.props.socket.send(JSON.stringify({
-            from: mes,
+            from: localStorage.getItem('value'),
             message: this.state.value,
         }));
     }
