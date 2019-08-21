@@ -6,11 +6,12 @@ import Messenger from "./components/Messenger";
 function App() {
 
     return (
-        <div className="App">
-            <header className="App-header">
-                <Messenger/>
+        <>
+            <header className="header">
+                <h1>Chat task by Zamtakaish</h1>
             </header>
-        </div>
+            <Messenger/>
+        </>
     );
 }
 

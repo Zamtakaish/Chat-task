@@ -10,7 +10,7 @@ export default class Messenger extends React.Component{
 
     constructor (props){
         super(props);
-        this.state = {connected: true, server: 'ws://st-chat.shas.teldasd'};
+        this.state = {connected: true, server: 'ws://st-chat.shas.tel'};
         this.socket = new WebSocket(this.state.server);
         this.onActive = this._onActive.bind(this);
     }
