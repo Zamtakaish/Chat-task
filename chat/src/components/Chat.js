@@ -1,4 +1,5 @@
 import React from 'react';
+import IdleTimer from 'react-idle-timer'
 
 import Message from "./Message";
 
@@ -6,7 +7,17 @@ class Chat extends React.Component{
 
     constructor (props){
         super(props);
-        this.state = { messages: []};
+        this.onAction = this._onAction.bind(this);
+        this.onActive = this._onActive.bind(this);
+        this.state = { messages: [], count: 0};
+    }
+
+    _onAction(e) {
+        this.setState({count: 0});
+    }
+
+    _onActive(e) {
+        this.setState({count: 0});
     }
 
     componentDidMount(){
@@ -18,9 +29,14 @@ class Chat extends React.Component{
                stateMessageArray.push(item);
             });
             console.log(JSON.parse(event.data)[0].from, JSON.parse(event.data)[0].message);
-            current.setState({ messages: stateMessageArray });
+            current.setState({ messages: stateMessageArray, count: +current.state.count + JSON.parse(event.data).length});
             console.log(current.state);
         };
+    }
+    componentDidUpdate(){
+        const title = document.title;
+        document.title = (this.state.count !== 0) ? `(${this.state.count}) ${title.slice(-4)}` : title.slice(-4);
+
     }
 
     render() {
@@ -30,6 +46,14 @@ class Chat extends React.Component{
         }
         return (
             <div className="main__chat_wrapper" >
+                <IdleTimer
+                    ref={ref => { this.idleTimer = ref }}
+                    element={document}
+                    onActive={this.onActive}
+                    onIdle={this.onIdle}
+                    onAction={this.onAction}
+                    debounce={250}
+                    timeout={10000} />
                 <div className="main__chat">
                     {
                         this.state.messages.map((item) =>
