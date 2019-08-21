@@ -4,7 +4,7 @@ export default class User extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = {value: localStorage.getItem('value')||'Anonymous',
+        this.state = {value: localStorage.getItem('username')||'Anonymous',
                       changeable: false};
         this.clickHandler = this.clickHandler.bind(this);
         this.submitHandler = this.submitHandler.bind(this);
@@ -20,6 +20,7 @@ export default class User extends React.Component{
     }
 
     submitHandler() {
+        localStorage.setItem('username', this.state.value);
         this.setState({changeable: false});
     }
 
