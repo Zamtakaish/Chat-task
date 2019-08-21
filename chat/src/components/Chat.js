@@ -17,6 +17,9 @@ class Chat extends React.Component{
     }
 
     _onActive(e) {
+        if(this.props.socket.readyState === 3){
+            console.log('Connection lost. Reestablish websocket protocol.');
+        }
         this.setState({count: 0});
     }
 
@@ -31,6 +34,12 @@ class Chat extends React.Component{
             console.log(JSON.parse(event.data)[0].from, JSON.parse(event.data)[0].message);
             current.setState({ messages: stateMessageArray, count: +current.state.count + JSON.parse(event.data).length});
             console.log(current.state);
+        };
+        this.props.socket.onerror = function(error) {
+            console.log(`[error] ${error.message}`);
+        };
+        this.props.socket.onclose = function(e) {
+            console.log("[closed]");
         };
     }
     componentDidUpdate(){

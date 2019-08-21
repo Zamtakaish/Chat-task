@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
-import Chat from "./components/Chat";
+
+import Messenger from "./components/Messenger";
 
 function App() {
 
     return (
         <div className="App">
             <header className="App-header">
-                <Chat socket={new WebSocket('ws://st-chat.shas.tel')}/>
+                <Messenger/>
             </header>
         </div>
     );
